@@ -1,17 +1,17 @@
 <template>
   <navigationItem/>
-  <UpdateSong></UpdateSong>
+  <songList/>
 </template>
 
 <script>
-import navigationItem from './components/navigationItem.vue';
-import UpdateSong from './components/UpdateSong.vue';
+import navigationItem from './components/navigationItem.vue'
+import songList from './components/songList.vue';
 
 export default {
   name: 'App',
   components: {
     navigationItem,
-    UpdateSong
+    songList
   }
 }
 </script>
@@ -20,5 +20,9 @@ export default {
   *{
     margin: 0;
     padding: 0;
+  }
+
+  body{
+    background-color:  #333131;
   }
 </style>
