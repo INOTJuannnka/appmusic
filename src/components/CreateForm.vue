@@ -18,7 +18,7 @@
           </select>
         </div>
         <button type="submit" class="button">Create Song</button>
-        <p v-if="cancionCreada" class="spotify-success-message">The song has been updated.</p>
+        <p v-if="cancionCreada" class="spotify-success-message">The song has been created.</p>
       </form>
     </div>
   </template>
