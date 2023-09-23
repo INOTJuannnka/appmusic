@@ -1,14 +1,17 @@
 <template>
   <navigationItem/>
+  <UpdateSong></UpdateSong>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import navigationItem from './components/navigationItem.vue';
+import UpdateSong from './components/UpdateSong.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    navigationItem,
+    UpdateSong
   }
 }
 </script>
