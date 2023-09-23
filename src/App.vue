@@ -6,17 +6,20 @@
     <div class="texto">
       <p>AppMusica</p>
       <HelloWorld msg="AppMusica" />
+      <CreateForm msg="AppMusica" />
     </div>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import CreateForm from './components/CreateForm.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    CreateForm
   }
 }
 </script>
