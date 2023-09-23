@@ -6,17 +6,20 @@
     <div class="texto">
       <p>AppMusica</p>
       <HelloWorld msg="AppMusica" />
+      <UpdateSong msg="AppMusica" />
     </div>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import UpdateSong from './components/UpdateSong.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    UpdateSong
   }
 }
 </script>
