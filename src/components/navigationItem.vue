@@ -27,8 +27,8 @@ export default {
   align-items: center;
   background-color: #403f55;
   height: 3rem;
-  gap: 1.5rem;
   justify-content: space-between;
+  width: 100vw;
 }
 
 #header #image-container {
