@@ -6,6 +6,15 @@
       alt="icon"
     />
     </a>
+    <div class="spotify-search-bar">
+      <input
+        type="text"
+        v-model="query"
+        @input="buscarCanciones"
+        class="spotify-input"
+        placeholder="Buscar canciones..."
+      />
+    </div>
     <ul id="lista">
       <li><a href="default.asp">Songs</a></li>
       <li><a href="contact.asp">Create Songs</a></li>
@@ -16,11 +25,42 @@
 <script>
 export default {
   name: "navigationItem",
+  data() {
+      return {
+        query: '',
+      };
+    },
+    methods: {
+      buscarCanciones() {
+        // Aquí puedes implementar la lógica para buscar canciones en función de la consulta "query"
+        // Puedes emitir un evento con la consulta para que otro componente la maneje
+        this.$emit('busqueda', this.query);
+      },
+    },
 };
+
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.spotify-search-bar {
+    margin: 20px 0;
+  }
+  
+  .spotify-input {
+    width: 200%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #282828;
+    color: white;
+  }
+  
+  .spotify-input::placeholder {
+    color: #B3B3B3;
+  }
 #header {
   padding: 0 1.5rem;
   display: flex;
