@@ -1,5 +1,5 @@
 <template>
-    <div class="form">
+    <div v-if="show" class="form" >
       <h2 class="form-title">Create a new song</h2>
       <form @submit.prevent="crearCancion" class="form-container">
         <div class="form-group">
@@ -26,6 +26,7 @@
   export default {
     data() {
       return {
+        show:false,
         cancion: {
           songName: '',
           artistName: '',
@@ -56,6 +57,9 @@
       };
     },
     methods: {
+      showComponent(){
+        this.show=true;
+      },
       crearCancion() {
       // Aquí puedes enviar la información del formulario a tu servidor o realizar cualquier otra acción
       // Por ahora, simplemente establecemos la variable cancionCreada en true

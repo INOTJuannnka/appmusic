@@ -24,7 +24,7 @@ export default {
     songs: null,
   }),
   created() {
-    axios.get("http://localhost:3000/api/songs").then((result) => {
+    axios.get("https://5c65bv7g-3000.use2.devtunnels.ms/api/songs").then((result) => {
       this.songs = result.data;
     });
   },

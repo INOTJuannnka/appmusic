@@ -1,17 +1,22 @@
 <template>
   <navigationItem/>
   <songList/>
+  <CreateForm></CreateForm>
+  <update-song></update-song>
 </template>
 
 <script>
+import CreateForm from './components/CreateForm.vue';
 import navigationItem from './components/navigationItem.vue'
 import songList from './components/songList.vue';
-
+import UpdateSong from './components/UpdateSong.vue';
 export default {
   name: 'App',
   components: {
     navigationItem,
-    songList
+    songList,
+    CreateForm,
+    UpdateSong
   }
 }
 </script>

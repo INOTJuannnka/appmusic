@@ -16,15 +16,18 @@
       />
     </div>
     <ul id="lista">
-      <li><a href="default.asp">Songs</a></li>
+      <li><a @click="showComponent" href="default.asp">Songs</a></li>
+      <create-form :show="showComponent"></create-form> 
       <li><a href="contact.asp">Create Songs</a></li>
     </ul>
   </header>
 </template>
 
 <script>
+import CreateForm from './CreateForm.vue';
 export default {
   name: "navigationItem",
+  showComponent:{CreateForm},
   data() {
       return {
         query: '',
