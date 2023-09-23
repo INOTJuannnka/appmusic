@@ -5,6 +5,7 @@
     </div>
     <div class="texto">
       <p>AppMusica</p>
+      <SearchBar msg="AppMusica" /> 
       <HelloWorld msg="AppMusica" />
       <CreateForm msg="AppMusica" />
     </div>
@@ -14,12 +15,14 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import CreateForm from './components/CreateForm.vue'
+import SearchBar from './components/SearchBar.vue'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    CreateForm
+    CreateForm,
+    SearchBar
   }
 }
 </script>
