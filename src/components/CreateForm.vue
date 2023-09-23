@@ -18,6 +18,7 @@
           </select>
         </div>
         <button type="submit" class="button">Create Song</button>
+        <p v-if="cancionCreada" class="spotify-success-message">The song has been updated.</p>
       </form>
     </div>
   </template>
@@ -50,17 +51,29 @@
           'Rap',
           'Reggae',
           'Ska'
-        ]
+        ],
+        cancionCreada:false
       };
     },
     methods: {
       crearCancion() {
-        console.log(this.cancion);
-      }
+      // Aquí puedes enviar la información del formulario a tu servidor o realizar cualquier otra acción
+      // Por ahora, simplemente establecemos la variable cancionCreada en true
+      this.cancionCreada = true;
+      setTimeout(() => {
+        // Después de un tiempo, reseteamos la variable cancionCreada para ocultar el mensaje
+        this.cancionCreada = false;
+      }, 3000); // El mensaje se ocultará después de 3 segundos (puedes ajustar este valor)
+    }
     }
   };
   </script>
   <style scoped>
+      .spotify-success-message {
+  color: #ffffff;
+  font-size: 16px;
+  margin-top: 10px;
+}
   .form {
     background-color: #1DB954;
     padding: 50px;
