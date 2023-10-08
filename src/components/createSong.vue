@@ -5,7 +5,7 @@
       <div class="form-group">
         <label for="songName" class="label">Song name:</label>
         <input
-          type="text" 
+          type="text"
           id="songName"
           v-model="cancion.songName"
           class="input"
@@ -24,16 +24,18 @@
       </div>
       <div class="form-group">
         <label for="genre" class="label">Song genre:</label>
-        <select id="genre" v-model="cancion.genre" class="input" required>
+        <select id="genre" v-model="cancion.songGenre" class="input" required>
           <option value="">Select the genre</option>
           <option v-for="genero in generosMusica" :key="genero" :value="genero">
             {{ genero }}
           </option>
         </select>
       </div>
-      <button type="submit" class="button">Create Song</button>
+      <button type="submit" class="button" :disabled="buttonDisabled">
+        Create Song
+      </button>
       <p v-if="cancionCreada" class="spotify-success-message">
-        The song has been created.
+        The song is being create.
       </p>
     </form>
   </div>
@@ -44,10 +46,12 @@ import axios from "axios";
 export default {
   data() {
     return {
+      buttonDisabled: false,
+      cancionCreada: false,
       cancion: {
         songName: "",
         artistName: "",
-        genre: "",
+        songGenre: "",
       },
       generosMusica: [
         "Pop",
@@ -73,15 +77,16 @@ export default {
     };
   },
   methods: {
-    crearCancion() {  
+    crearCancion() {
+      this.cancionCreada = true;
+      this.buttonDisabled = true;
       axios
-        .post("http://localhost:3000/api/songs", {
-          songName: this.cancion.songName,
-          artistName: this.cancion.artistName,
-          songGenre: this.cancion.genre,
-        })
+        .post("http://localhost:3000/api/songs", this.cancion)
         .then(() => {
-          alert("cancion creada");
+          alert("song created");
+          this.cancionCreada = false;
+          this.buttonDisabled = false;
+          this.$router.go("/");
         });
     },
   },
@@ -144,8 +149,4 @@ export default {
 .button:hover {
   background-color: #1ed760;
 }
-</style>
-
-<style scoped>
-/* Agrega estilos CSS según tus preferencias */
 </style>

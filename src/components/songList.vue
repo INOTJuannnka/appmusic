@@ -60,11 +60,14 @@ export default {
       const url = "http://localhost:3000/api/songs/name/";
       let query = this.text.trim().replace(/\s+/g, "&");
       if (query.length > 0) {
-        axios.get(`${url}${query}`).then((result) => {
+        axios
+          .get(`${url}${query}`)
+          .then((result) => {
             this.songs = result.data;
-        }).catch(()=>{
-          this.songs = [];
-        });
+          })
+          .catch(() => {
+            this.songs = [];
+          });
       } else {
         axios.get("http://localhost:3000/api/songs").then((result) => {
           this.songs = result.data;
@@ -72,12 +75,15 @@ export default {
       }
     },
     deleteSong(id) {
-      const url = "http://localhost:3000/api/songs";
-      axios.delete(`${url}/${id}`).then(() => {
-        axios.get(url).then((result) => {
-          this.songs = result.data;
+      const userConfirmed = window.confirm("Are you sure about that?");
+      if (userConfirmed) {
+        const url = "http://localhost:3000/api/songs";
+        axios.delete(`${url}/${id}`).then(() => {
+          axios.get(url).then((result) => {
+            this.songs = result.data;
+          });
         });
-      });
+      }
     },
   },
 };

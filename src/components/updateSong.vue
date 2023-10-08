@@ -31,9 +31,9 @@
           </option>
         </select>
       </div>
-      <button type="submit" class="button">Update</button>
-      <p v-if="cancionCreada" class="spotify-success-message">
-        The song has been updated.
+      <button type="submit" class="button" :disabled="buttonDisabled">Update</button>
+      <p v-if="cancionActualizada" class="spotify-success-message">
+        The song is being updating.
       </p>
     </form>
   </div>
@@ -43,6 +43,8 @@ import axios from 'axios'
 export default {
   data() {
     return {
+      cancionActualizada: false,
+      buttonDisabled:false,
       cancion: {
         songName: "Generic name",
         artistName: "Generic Artist",
@@ -78,9 +80,13 @@ export default {
   },
   methods: {
     actualizarCancion() {
-      this.cancionCreada = true;
+      this.cancionActualizada = true;
+      this.buttonDisabled = true;
       axios.put(`http://localhost:3000/api/songs/${this.$route.params.cancionId}`,this.cancion).then(()=>{
-        alert("cancion actualizada")
+        this.cancionActualizada = false;
+        this.buttonDisabled = false;
+        alert("song updated")
+        this.$router.push("/");
       });
     },
   },  
